@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Datasets &amp; Data Pipeline — PhishGuard AI</title>
+<style>
+  @page { size: A4; margin: 14mm 13mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1a2333; font-size: 10.2px; line-height: 1.45; }
+  .cover { background: linear-gradient(135deg, #0b1026 0%, #131a3a 55%, #0e2a4d 100%); color: #fff;
+           padding: 26px 30px; border-radius: 10px; margin-bottom: 16px; }
+  .cover h1 { font-size: 23px; letter-spacing: .3px; }
+  .cover .sub { color: #6fe3ff; font-weight: 600; margin-top: 4px; font-size: 12.5px; }
+  .cover .meta { margin-top: 14px; font-size: 10px; color: #c9d4ee; }
+  .cover .meta b { color: #fff; }
+  h2 { font-size: 14px; color: #0b1026; border-left: 5px solid #1d7ef7; padding-left: 9px; margin: 16px 0 8px; }
+  h3 { font-size: 11.5px; color: #123; margin: 10px 0 5px; }
+  p  { margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 7px 0 10px; font-size: 9.6px; }
+  th { background: #0e1c3f; color: #dff1ff; text-align: left; padding: 5px 7px; font-weight: 600; }
+  td { border: 1px solid #ccd6e8; padding: 5px 7px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f2f6fc; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 9px; font-size: 8.6px; font-weight: 700; }
+  .real { background: #d7f5e2; color: #0a6b32; border: 1px solid #7fd3a0; }
+  .syn  { background: #fde8d7; color: #8a4a00; border: 1px solid #f0b27c; }
+  .statgrid { display: flex; gap: 9px; margin: 8px 0; }
+  .stat { flex: 1; background: #f2f6fc; border: 1px solid #ccd6e8; border-radius: 7px; padding: 7px 9px; text-align: center; }
+  .stat .v { font-size: 14px; font-weight: 700; color: #1d7ef7; }
+  .stat .l { font-size: 8.4px; color: #516180; text-transform: uppercase; letter-spacing: .4px; }
+  .box { background: #f7faff; border: 1px solid #bcd0ef; border-left: 4px solid #1d7ef7;
+         border-radius: 6px; padding: 8px 10px; margin: 8px 0; }
+  .warn { background: #fff8f0; border-left-color: #e8890c; border-color: #f0cf9e; }
+  .flow { font-family: Consolas, monospace; font-size: 9.4px; background: #0e1c3f; color: #bfe6ff;
+          padding: 9px 11px; border-radius: 7px; margin: 7px 0; white-space: pre-wrap; line-height: 1.5; }
+  a { color: #1d7ef7; word-break: break-all; }
+  code { font-family: Consolas, monospace; background: #eef2fa; border: 1px solid #d5deee;
+         border-radius: 3px; padding: 0 3px; font-size: 9.2px; }
+  ul { margin: 4px 0 8px 18px; } li { margin-bottom: 3px; }
+  .pagebreak { page-break-before: always; }
+  .foot { margin-top: 14px; padding-top: 6px; border-top: 1px solid #ccd6e8; font-size: 8.4px; color: #66738f; }
+  .cite { font-size: 9.3px; background: #f2f6fc; border: 1px solid #ccd6e8; border-radius: 6px; padding: 8px 10px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Datasets &amp; Data Pipeline</h1>
+  <div class="sub">PhishGuard AI — Multimodal Phishing Detection and Real-Time Browser Protection Platform</div>
+  <div class="meta">
+    <b>B.Tech Final Year Project, A.Y. 2026–27</b> · Data documentation for project presentation<br>
+    Every dataset below is <b>downloadable from a public link or located at a stated path</b>; every number is measured and reproducible.
+    Synthetic data is flagged everywhere and never mixed with real metrics.
+  </div>
+</div>
+
+<h2>1. Complete dataset inventory (all 3 datasets)</h2>
+<table>
+  <tr><th style="width:5%">#</th><th style="width:26%">Dataset</th><th style="width:25%">Origin</th><th style="width:13%">Real / Synthetic</th><th>Role in the project</th></tr>
+  <tr>
+    <td><b>A</b></td>
+    <td><b>PhiUSIIL Phishing URL Dataset</b><br>235,795 URLs × 56 columns</td>
+    <td>UCI Machine Learning Repository, dataset <b>#967</b> (public download, CC BY 4.0)</td>
+    <td><span class="tag real">REAL — published research data</span></td>
+    <td><b>Trains and evaluates our URL machine-learning models</b> (Random Forest + XGBoost) — the core ML component of the website/URL modality</td>
+  </tr>
+  <tr>
+    <td><b>B</b></td>
+    <td><b>Real-world sanity set</b><br><code>url_sanity_realworld.csv</code> — 40 URLs (20 legit + 20 phishing)</td>
+    <td>Hand-labelled by our team from live internet sites and active phishing patterns</td>
+    <td><span class="tag real">REAL — hand-labelled</span></td>
+    <td><b>Real-world generalisation check only</b> (never trained on). Result: 38/40 correct, 0 phishing missed. Exists to catch dataset-style overfitting</td>
+  </tr>
+  <tr>
+    <td><b>C</b></td>
+    <td><b>Preprocessing demo file</b><br><code>sample_urls_demo.csv</code> — 23 rows</td>
+    <td>Written by our team for this project</td>
+    <td><span class="tag syn">SYNTHETIC — demo only</span></td>
+    <td><b>Demonstrates the data-engineering workflow</b> (upload → inspect → choose operations → execute → results → export). Flagged <code>is_synthetic=true</code> in the database; never counted in any accuracy metric</td>
+  </tr>
+</table>
+<div class="box">Runtime scan data (18 rows in the <code>scans</code> table) is <b>live system output</b>, not a training dataset — it stores every analysis the platform performs with its full evidence trail.</div>
+
+<h2>2. Dataset A — PhiUSIIL Phishing URL Dataset (primary training data)</h2>
+<div class="statgrid">
+  <div class="stat"><div class="v">235,795</div><div class="l">Total URLs</div></div>
+  <div class="stat"><div class="v">134,850</div><div class="l">Legitimate (label 1)</div></div>
+  <div class="stat"><div class="v">100,945</div><div class="l">Phishing (label 0)</div></div>
+  <div class="stat"><div class="v">0</div><div class="l">Missing values</div></div>
+  <div class="stat"><div class="v">54.2 MB</div><div class="l">CSV size</div></div>
+</div>
+<table>
+  <tr><th style="width:26%">Property</th><th>Value</th></tr>
+  <tr><td>Source / landing page</td><td>UCI Machine Learning Repository — dataset 967 (donated 3 Mar 2024)</td></tr>
+  <tr><td>Download link (page)</td><td><a href="https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset">https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset</a></td></tr>
+  <tr><td>Direct file (zip, 14.7 MB)</td><td><a href="https://archive.ics.uci.edu/static/public/967/phiusiil+phishing+url+dataset.zip">https://archive.ics.uci.edu/static/public/967/phiusiil+phishing+url+dataset.zip</a></td></tr>
+  <tr><td>Local copy (with checksum)</td><td><code>datasets/sources/PhiUSIIL_Phishing_URL_Dataset.csv</code> (+ original zip) — SHA-256 of zip: <code>0A639FD03AEA6308C5B1C10C92AA23C2CE1505447A9137271865CD0BADC9A59A</code></td></tr>
+  <tr><td>Content</td><td>Phishing + legitimate URLs (mostly recent), with 54 engineered features. <b>We use only the raw <code>URL</code> string and the <code>label</code></b> — features are recomputed by our own code so nothing leaks from the dataset's internals</td></tr>
+  <tr><td>Label convention</td><td><code>1</code> = legitimate, <code>0</code> = phishing</td></tr>
+  <tr><td>License &amp; citation</td><td>CC BY 4.0. Cite as: <i>Prasad, A. &amp; Chandra, S. (2024). PhiUSIIL Phishing URL (Website) [Dataset]. UCI Machine Learning Repository. DOI: 10.1016/j.cose.2023.103545</i></td></tr>
+  <tr><td>Accompanying paper</td><td>Prasad &amp; Chandra, “PhiUSIIL: A diverse security profile empowered phishing URL detection framework…”, <i>Computers &amp; Security</i>, 2024</td></tr>
+</table>
+
+<h3>2.1 What we do with it (preprocessing → training), all measured</h3>
+<div class="flow">Raw rows ............................. 235,795
+Drop conflicting-label URLs .......... 0        (no URL had both labels)
+Remove duplicate URLs ................ 425      → 235,370 unique URLs
+Feature engineering .................. our own 16 HOST-ONLY features computed
+                                       from the URL string (app/ml/url_features.py)
+Stratified split, seed = 42 ......... 80% train 188,296 / 20% test 47,074
+                                       (de-duplication BEFORE the split, so an
+                                       identical URL can never appear in both)
+Train ............................... RandomForest + XGBoost ensemble
+Hold-out evaluation (test set only) . RF:  acc 0.956  F1 0.947  ROC-AUC 0.980
+                                       XGB: acc 0.958  F1 0.950  ROC-AUC 0.984
+Real-world sanity (Dataset B) ....... 38/40 correct, 0 phishing missed</div>
+<div class="box warn"><b>Key scientific finding of the project:</b> our first model versions used path-based features and scored ≈99.5% on the hold-out — but that was a <b>dataset artifact</b> (every legitimate PhiUSIIL URL is a bare domain, so “has a path” nearly predicted the label). Real-world URLs broke it. Version 3 removed those features, trading ~4 accuracy points for genuine generalisation. This accuracy-vs-generalisation story is the honest highlight of our work.</div>
+
+<div class="pagebreak"></div>
+<h2>3. Dataset B — Real-world sanity set (generalisation check)</h2>
+<table>
+  <tr><th style="width:26%">Property</th><th>Value</th></tr>
+  <tr><td>File</td><td><code>datasets/url_sanity_realworld.csv</code> (columns: <code>url, label, label_note</code>)</td></tr>
+  <tr><td>Size</td><td>40 URLs — <b>20 legitimate</b> (google.com, github.com, stackoverflow.com, python.org, wikipedia.org, …) + <b>20 phishing patterns</b> (live impersonation/credential-harvest style URLs)</td></tr>
+  <tr><td>Origin</td><td>Hand-labelled by our team — deliberately in the URL style of the real internet, not of the training dataset</td></tr>
+  <tr><td>Used for</td><td><b>Evaluation only — never training, never tuning.</b> It exists to prove the model generalises beyond PhiUSIIL's URL style</td></tr>
+  <tr><td>Measured result</td><td><b>38 / 40 correct; 0 phishing missed.</b> The 2 misses are benign sites the URL modality alone cannot clear — they are resolved by content fusion in the full pipeline</td></tr>
+  <tr><td>Stored provenance</td><td>Recorded in training metadata (<code>models/*.metadata.json → realworldSanity</code>) and shown on the dashboard's Models page</td></tr>
+</table>
+
+<h2>4. Dataset C — Synthetic preprocessing demo file</h2>
+<table>
+  <tr><th style="width:26%">Property</th><th>Value</th></tr>
+  <tr><td>File</td><td><code>datasets/sample_urls_demo.csv</code> — 23 rows × 11 columns (URL features + label)</td></tr>
+  <tr><td>Origin</td><td><span class="tag syn">SYNTHETIC</span> written by our team; contains deliberate imperfections (duplicates, a conflicting-label pair, missing values, an invalid row, a “suspicious” label needing normalisation) so every preprocessing step visibly does something</td></tr>
+  <tr><td>Used for</td><td>The dashboard's <b>Dataset management → STEP 1–6</b> workflow demonstration and <code>scripts/test-api-demo.ps1</code></td></tr>
+  <tr><td>Measured pipeline result</td><td><b>23 rows in → 17 rows out</b>: 3 duplicates removed (incl. 1 conflicting-label pair), 2 invalid rows removed, 1 missing value handled, “suspicious → phishing” label mapping, ~31 ms</td></tr>
+  <tr><td>Database flag</td><td>Rows in <code>datasets</code> carry <code>is_synthetic=true</code> and appear labelled as demo data in the UI — they can never be mistaken for real observations</td></tr>
+</table>
+
+<h2>5. Two preprocessing layers (both reproducible)</h2>
+<h3>5.1 Training-time preprocessing (Dataset A → model)</h3>
+<p>Implemented in <code>ai-service/training/train_url_models.py</code>; every count is persisted to <code>models/url_models.training.json</code> (§2.1 box above).</p>
+<h3>5.2 Interactive workflow preprocessing (Dataset C → audit trail)</h3>
+<p>Implemented in <code>ai-service/app/preprocessing/pipeline.py</code> — a <b>fixed order, nothing automatic</b>; the user ticks exactly which operations run:</p>
+<div class="flow">normalize_labels → drop_invalid_rows → convert_types →
+detect_conflicting_duplicates → handle_missing → remove_duplicates →
+dedupe_on_column → drop/select columns → validate_features (report-only)</div>
+<p>Every run stores its exact parameters, before/after class balance, per-operation counts, warnings and the full result JSON in the PostgreSQL <code>preprocessing_runs</code> table — preprocessing is <b>auditable and repeatable</b>.</p>
+
+<h2>6. Where the data lives (storage map)</h2>
+<table>
+  <tr><th style="width:34%">What</th><th>Where</th></tr>
+  <tr><td>Raw real dataset (zip + CSV, checksummed)</td><td><code>datasets/sources/</code> in the project</td></tr>
+  <tr><td>Sanity set &amp; demo CSV</td><td><code>datasets/url_sanity_realworld.csv</code>, <code>datasets/sample_urls_demo.csv</code></td></tr>
+  <tr><td><b>Trained models (learned from Dataset A)</b></td><td><code>models/url_random_forest.joblib</code>, <code>models/url_xgboost.joblib</code> + <code>*.metadata.json</code> (provenance, feature list, measured metrics, training timestamp)</td></tr>
+  <tr><td>Uploaded CSVs at runtime</td><td><code>uploads/</code> (originals never modified)</td></tr>
+  <tr><td>Preprocessed outputs</td><td><code>uploads/processed/</code> (downloadable from the dashboard)</td></tr>
+  <tr><td><b>PostgreSQL audit tables</b></td><td><code>datasets</code> (with <code>is_synthetic</code> flag) · <code>preprocessing_runs</code> (parameters + counts + warnings + result JSON) · <code>model_versions</code> (registry) · <code>evaluation_runs</code> (measured metrics — <b>NULL if never measured, never a fabricated 0</b>) · <code>scans</code> / <code>modality_results</code> / <code>evidence</code> (runtime analyses)</td></tr>
+  <tr><td>Docker deployment</td><td><code>./models</code> mounted read-only; uploads on a shared volume — identical layout to local runs</td></tr>
+</table>
+
+<h2>7. How data flows at prediction time (no dataset needed)</h2>
+<div class="flow">URL typed by user / browser extension
+   → 16 host-only features computed live (same code as training)
+   → RF + XGBoost ensemble  → P(phishing)
+   → SHAP explains the exact contributors (▲ toward phishing / ▼ toward legitimate)
+   → fused with HTML/NLP/form-link evidence → verdict + evidence persisted in PostgreSQL</div>
+
+<h2>8. Honesty &amp; provenance policies (what makes this defensible)</h2>
+<ul>
+  <li><b>Synthetic data is flagged everywhere</b> — <code>is_synthetic</code> in SQL, a badge in the UI, and a dedicated label in this document.</li>
+  <li><b>Every metric is measured and stored</b> (hold-out + sanity + evaluation_runs); anything not measured displays <code>NULL</code>, never a fake number.</li>
+  <li><b>No test-set training</b> — deduplication happens before the split; the test set is never touched during training.</li>
+  <li><b>Dataset artifacts are called out, not hidden</b> — the v1/v2 → v3 feature change is documented with both metric sets.</li>
+  <li><b>Checksummed raw data</b> — the PhiUSIIL zip's SHA-256 is recorded in the dataset README, training metadata and this document.</li>
+</ul>
+
+<h2>9. References &amp; links (for the presentation)</h2>
+<div class="cite">
+  <b>Primary dataset — PhiUSIIL Phishing URL Dataset</b><br>
+  UCI page: <a href="https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset">https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset</a><br>
+  Direct zip: <a href="https://archive.ics.uci.edu/static/public/967/phiusiil+phishing+url+dataset.zip">https://archive.ics.uci.edu/static/public/967/phiusiil+phishing+url+dataset.zip</a> · License: CC BY 4.0<br>
+  Citation: <i>Prasad, A. &amp; Chandra, S. (2024). PhiUSIIL Phishing URL (Website) [Dataset]. UCI Machine Learning Repository. https://doi.org/10.1016/j.cose.2023.103545</i><br>
+  Paper: <i>PhiUSIIL: A diverse security profile empowered phishing URL detection framework based on similarity index and incremental learning</i>, Computers &amp; Security, 2024
+</div>
+<div class="box" style="margin-top:8px">
+  <b>Local paths to show live during the demo:</b><br>
+  Datasets: <code>Default Project\datasets\</code> · Models: <code>Default Project\models\</code><br>
+  Dashboard evidence: <code>http://localhost:5173/datasets</code> (STEP 1–6 + dataset table with synthetic flags) ·
+  <code>http://localhost:5173/models</code> (measured metrics + notes) ·
+  <code>http://localhost:5173/evaluations</code> (evaluation_runs history)
+</div>
+
+<div class="foot">Generated for the PhishGuard AI B.Tech project (A.Y. 2026–27). All statistics measured from the artifacts in this repository on 15 Oct 2026 — reproducible via <code>scripts/test-api-demo.ps1</code> and <code>ai-service/training/train_url_models.py</code>.</div>
+
+</body>
+</html>

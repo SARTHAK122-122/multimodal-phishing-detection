@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="" width="20" height="20" />
+        <span>PhishGuard</span>
+      </div>
+      <label class="switch" title="Enable real-time scanning">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <main>
+      <!-- Verdict for the active tab -->
+      <section id="verdict-section">
+        <div class="host-row">
+          <span class="host" id="host">…</span>
+          <span class="badge neutral" id="status-chip">…</span>
+        </div>
+
+        <div id="idle" class="hint">Scanning the current page with the analysis platform…</div>
+
+        <div id="result" hidden>
+          <div class="verdict-row">
+            <span class="badge" id="classification">-</span>
+            <span class="score" id="score"></span>
+          </div>
+          <p class="reason" id="explanation"></p>
+          <ul class="evidence" id="evidence"></ul>
+          <p class="caveat" id="caveat" hidden></p>
+          <div class="actions">
+            <button class="btn" id="report" hidden>Full report</button>
+            <button class="btn ghost" id="rescan">Rescan</button>
+            <button class="btn ghost" id="deep">Deep scan</button>
+          </div>
+        </div>
+
+        <div id="error" class="error" hidden></div>
+      </section>
+
+      <hr />
+
+      <!-- Settings -->
+      <section>
+        <div class="label">Analysis backend</div>
+        <input type="text" id="backend" spellcheck="false" />
+        <div class="label" style="margin-top: 10px">Scan mode</div>
+        <select id="mode">
+          <option value="fast">Fast - fetch HTML only (default)</option>
+          <option value="thorough">Thorough - render page + screenshot</option>
+        </select>
+        <p class="fineprint">
+          Verdicts are produced by the multimodal platform (Spring Boot + Python fusion engine),
+          never by this extension. No page content, form data or credentials are collected here -
+          only the visited URL is sent for analysis.
+        </p>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+/* PhishGuard interstitial - deep-navy panel with a red/cyan alert glow,
+   matching the dashboard's visual language. */
+
+#phishguard-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(59, 130, 246, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 50% 110%, rgba(220, 38, 38, 0.16), transparent 60%),
+    rgba(6, 10, 22, 0.96);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #e5ecf7;
+}
+
+#phishguard-overlay .pg-card {
+  width: min(560px, 100%);
+  background: linear-gradient(180deg, #131c31 0%, #0f172a 100%);
+  border: 1px solid rgba(220, 38, 38, 0.55);
+  border-radius: 14px;
+  padding: 30px 30px 24px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 40px rgba(220, 38, 38, 0.28),
+    0 24px 60px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+#phishguard-overlay .pg-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #ef4444, #991b1b);
+  color: #fff;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 64px;
+  box-shadow: 0 0 26px rgba(239, 68, 68, 0.7);
+}
+
+#phishguard-overlay .pg-title {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#phishguard-overlay .pg-host {
+  margin: 0 0 14px;
+  font-family: 'Cascadia Code', Consolas, monospace;
+  font-size: 14px;
+  color: #22d3ee;
+  word-break: break-all;
+}
+
+#phishguard-overlay .pg-reason {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #b7c5e0;
+}
+
+#phishguard-overlay .pg-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  background: rgba(220, 38, 38, 0.16);
+  border: 1px solid rgba(220, 38, 38, 0.6);
+  color: #fca5a5;
+}
+
+#phishguard-overlay .pg-evidence {
+  list-style: none;
+  margin: 16px 0 6px;
+  padding: 0;
+  text-align: left;
+}
+
+#phishguard-overlay .pg-evidence li {
+  border-left: 3px solid #ef4444;
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: 0 6px 6px 0;
+  padding: 7px 10px;
+  margin-bottom: 7px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #c9d5ec;
+}
+
+#phishguard-overlay .pg-evidence .pg-sev {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #fecaca;
+  background: rgba(220, 38, 38, 0.22);
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+
+#phishguard-overlay .pg-caveat {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  color: #93a4c4;
+}
+
+#phishguard-overlay .pg-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+#phishguard-overlay .pg-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#phishguard-overlay .pg-primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+#phishguard-overlay .pg-primary:hover {
+  background: #2563eb;
+}
+
+#phishguard-overlay .pg-ghost {
+  background: transparent;
+  color: #93a4c4;
+  border: 1px solid #24314f;
+}
+
+#phishguard-overlay .pg-ghost:hover {
+  color: #e5ecf7;
+  border-color: #3b82f6;
+}

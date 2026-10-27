@@ -1,0 +1,49 @@
+{
+  "trainedAt": "2026-10-11T03:26:37+00:00",
+  "dataset": "UCI ML Repository #967 PhiUSIIL Phishing URL Dataset (https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset), sha256=0A639FD03AEA6308C5B1C10C92AA23C2CE1505447A9137271865CD0BADC9A59A",
+  "randomSeed": 42,
+  "splitStrategy": "stratified 80/20 hold-out (train/test)",
+  "trainSize": 188296,
+  "testSize": 47074,
+  "featureNames": [
+    "hostname_length",
+    "num_dots",
+    "num_hyphens",
+    "num_subdomains",
+    "has_ip_host",
+    "has_https",
+    "num_at_symbols",
+    "tld_length",
+    "is_suspicious_tld",
+    "is_common_tld",
+    "has_punycode",
+    "host_digit_count",
+    "host_entropy",
+    "brand_in_unrelated_domain",
+    "is_shortener",
+    "num_labels"
+  ],
+  "featureSchemaVersion": 2,
+  "metrics": {
+    "accuracy": 0.9558779793516591,
+    "precision": 0.968891432138584,
+    "recall": 0.9264325507361719,
+    "f1": 0.9471864113713225,
+    "rocAuc": 0.9797504957904474,
+    "falsePositiveRate": 0.02217278457545421,
+    "falseNegativeRate": 0.07356744926382809
+  },
+  "realworldSanity": {
+    "available": true,
+    "total": 40,
+    "correct": 38,
+    "accuracy": 0.95,
+    "falsePositives": 2,
+    "falseNegatives": 0,
+    "fpUrls": [
+      "https://github.com/",
+      "https://stackoverflow.com/"
+    ],
+    "fnUrls": []
+  }
+}

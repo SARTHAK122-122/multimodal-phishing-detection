@@ -1,0 +1,78 @@
+{
+  "trainedAt": "2026-10-11T03:26:37+00:00",
+  "dataset": "UCI ML Repository #967 PhiUSIIL Phishing URL Dataset (https://archive.ics.uci.edu/dataset/967/phiusiil+phishing+url+dataset), sha256=0A639FD03AEA6308C5B1C10C92AA23C2CE1505447A9137271865CD0BADC9A59A",
+  "randomSeed": 42,
+  "dataQuality": {
+    "raw_rows": 235795,
+    "label_legitimate": 134850,
+    "label_phishing": 100945,
+    "dropped_conflicting_label_urls": 0,
+    "dropped_duplicate_urls": 425,
+    "rows_after_dedupe": 235370,
+    "emptyUrls": 0
+  },
+  "models": {
+    "url_random_forest": {
+      "accuracy": 0.9558779793516591,
+      "precision": 0.968891432138584,
+      "recall": 0.9264325507361719,
+      "f1": 0.9471864113713225,
+      "rocAuc": 0.9797504957904474,
+      "falsePositiveRate": 0.02217278457545421,
+      "falseNegativeRate": 0.07356744926382809,
+      "trainSeconds": 22.3,
+      "confusionMatrix": {
+        "tn": 26372,
+        "fp": 598,
+        "fn": 1479,
+        "tp": 18625
+      },
+      "trainSize": 188296,
+      "testSize": 47074,
+      "realworldSanity": {
+        "available": true,
+        "total": 40,
+        "correct": 38,
+        "accuracy": 0.95,
+        "falsePositives": 2,
+        "falseNegatives": 0,
+        "fpUrls": [
+          "https://github.com/",
+          "https://stackoverflow.com/"
+        ],
+        "fnUrls": []
+      }
+    },
+    "url_xgboost": {
+      "accuracy": 0.9583209414963674,
+      "precision": 0.9764681163987814,
+      "recall": 0.924691603660963,
+      "f1": 0.9498748147769659,
+      "rocAuc": 0.9842352055186224,
+      "falsePositiveRate": 0.01661104931405265,
+      "falseNegativeRate": 0.075308396339037,
+      "trainSeconds": 7.0,
+      "confusionMatrix": {
+        "tn": 26522,
+        "fp": 448,
+        "fn": 1514,
+        "tp": 18590
+      },
+      "trainSize": 188296,
+      "testSize": 47074,
+      "realworldSanity": {
+        "available": true,
+        "total": 40,
+        "correct": 38,
+        "accuracy": 0.95,
+        "falsePositives": 2,
+        "falseNegatives": 0,
+        "fpUrls": [
+          "https://github.com/",
+          "https://stackoverflow.com/"
+        ],
+        "fnUrls": []
+      }
+    }
+  }
+}

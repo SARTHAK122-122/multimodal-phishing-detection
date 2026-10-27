@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "PhishGuard - Multimodal Phishing Protection",
+  "version": "1.0.0",
+  "description": "Real-time phishing protection backed by the multimodal analysis platform: scans each visited URL, shows an honest risk badge, and warns before credential-harvesting pages.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PhishGuard",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "http://localhost:8088/*",
+    "http://127.0.0.1:8088/*",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
