@@ -11,7 +11,8 @@ import axios from 'axios';
  * VITE_API_BASE_URL at build time for exotic deployments.
  */
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL ?? '/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL ?? `${import.meta.env.BASE_URL}api`,
+  withCredentials: Boolean(import.meta.env.VITE_API_BASE_URL),
   // Website scans with rendering take up to ~2 minutes end-to-end; the backend
   // read timeout is 120s, so the client must wait at least as long.
   timeout: 180000,

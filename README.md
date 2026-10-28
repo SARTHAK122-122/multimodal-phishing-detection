@@ -1,10 +1,26 @@
-# PhishGuard AI — Multimodal Phishing Detection and Real-Time Browser Protection Platform
+<div align="center">
 
-B.Tech final-year project: a full-stack platform that detects phishing across **four input
-categories — websites/URLs, emails, SMS and QR codes** — by fusing modality-specific
-analyses (URL-feature ML, DOM/text rules, NLP, vision) into one **explainable risk verdict,
-persisted in PostgreSQL**, with a React dashboard and a **Chrome MV3 extension** providing
-real-time browser protection.
+# 🛡️ PhishGuard AI
+
+### Multimodal phishing detection with explainable, real-time browser protection
+
+[![Live demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2563eb?style=for-the-badge&logo=github)](https://sarthak122-122.github.io/multimodal-phishing-detection/)
+[![CI](https://github.com/SARTHAK122-122/multimodal-phishing-detection/actions/workflows/pages.yml/badge.svg)](https://github.com/SARTHAK122-122/multimodal-phishing-detection/actions/workflows/pages.yml)
+[![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)](PROJECT_STATUS.md)
+
+[**Open live demo**](https://sarthak122-122.github.io/multimodal-phishing-detection/) · [Architecture](#architecture) · [Verified results](#measured-results-how-measured) · [Run locally](#quick-start)
+
+A full-stack, end-to-end phishing detection platform spanning **websites, email, SMS and QR codes**.
+It combines URL machine-learning, transparent DOM/NLP rules and explainability into a single,
+auditable verdict persisted in PostgreSQL—with a React dashboard and a Chrome MV3 extension.
+
+</div>
+
+> [!TIP]
+> The GitHub Pages demo deploys the React interface and is a real frontend build. Its scanner calls
+> require the public API endpoint configured in the `DEMO_API_BASE_URL` repository variable.
+> Until that endpoint is configured, follow the [local quick start](#quick-start) to run every
+> scan and account workflow.
 
 > **Honesty policy (project rule):** every metric shown anywhere in this project is either
 > measured and stored, or displayed as `NULL`/empty/"not trained". Seeded demonstration

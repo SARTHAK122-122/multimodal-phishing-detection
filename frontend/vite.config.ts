@@ -2,7 +2,10 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  // GitHub Pages serves project sites below /<repository>/, while local and
+  // Docker builds continue to use the root path.
+  base: mode === 'github-pages' ? '/multimodal-phishing-detection/' : '/',
   plugins: [react()],
   server: {
     // Dev convenience: the dashboard calls /api/* same-origin, and Vite
@@ -17,4 +20,4 @@ export default defineConfig({
       '/api': 'http://localhost:8088',
     },
   },
-})
+}))
