@@ -2,25 +2,27 @@
 
 # 🛡️ PhishGuard AI
 
-### Multimodal phishing detection with explainable, real-time browser protection
+### See the signals. Understand the verdict. Browse with more confidence.
 
-[![Live demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-2563eb?style=for-the-badge&logo=github)](https://sarthak122-122.github.io/multimodal-phishing-detection/)
+[![Project preview](https://img.shields.io/badge/Project%20Preview-GitHub%20Pages-2563eb?style=for-the-badge&logo=github)](https://sarthak122-122.github.io/multimodal-phishing-detection/)
 [![CI](https://github.com/SARTHAK122-122/multimodal-phishing-detection/actions/workflows/pages.yml/badge.svg)](https://github.com/SARTHAK122-122/multimodal-phishing-detection/actions/workflows/pages.yml)
-[![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)](PROJECT_STATUS.md)
+[![React](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)](frontend/)
+[![Python](https://img.shields.io/badge/Python-FastAPI-3776ab?logo=python&logoColor=white)](ai-service/)
+[![Java](https://img.shields.io/badge/Java-Spring%20Boot-ed6c20?logo=springboot&logoColor=white)](backend/)
 
-[**Open live demo**](https://sarthak122-122.github.io/multimodal-phishing-detection/) · [Architecture](#architecture) · [Verified results](#measured-results-how-measured) · [Run locally](#quick-start)
+[**Open the project preview**](https://sarthak122-122.github.io/multimodal-phishing-detection/) · [How it works](#architecture) · [Measured results](#measured-results-how-measured) · [Run locally](#quick-start)
 
-A full-stack, end-to-end phishing detection platform spanning **websites, email, SMS and QR codes**.
-It combines URL machine-learning, transparent DOM/NLP rules and explainability into a single,
-auditable verdict persisted in PostgreSQL—with a React dashboard and a Chrome MV3 extension.
+A full-stack phishing-detection research project for **websites, email, SMS and QR codes**.
+It brings URL machine learning, transparent content rules and explainable evidence together in a
+React dashboard, Spring Boot API, Python AI service, PostgreSQL store and Chrome extension.
 
 </div>
 
 > [!TIP]
-> The GitHub Pages demo deploys the React interface and is a real frontend build. Its scanner calls
-> require the public API endpoint configured in the `DEMO_API_BASE_URL` repository variable.
-> Until that endpoint is configured, follow the [local quick start](#quick-start) to run every
-> scan and account workflow.
+> GitHub Pages hosts a polished, interactive **project showcase**. Real scans, accounts and history
+> require the backend API, which is not hosted by GitHub Pages. To connect a hosted backend, set the
+> repository Actions variable `DEMO_API_BASE_URL`; to run the complete application locally, follow
+> the [quick start](#quick-start).
 
 > **Honesty policy (project rule):** every metric shown anywhere in this project is either
 > measured and stored, or displayed as `NULL`/empty/"not trained". Seeded demonstration
@@ -31,6 +33,20 @@ auditable verdict persisted in PostgreSQL—with a React dashboard and a Chrome 
 
 **Current verified status lives in [`PROJECT_STATUS.md`](PROJECT_STATUS.md)** (updated with
 every change; includes measured metrics, known gaps and the honest "not done" list).
+
+---
+
+### What you can explore
+
+| Input | Analysis |
+|---|---|
+| 🌐 Website / URL | URL-model signals, page evidence and explainable risk contributors |
+| ✉️ Email | Message, sender metadata and embedded-link analysis |
+| 💬 SMS | Text, sender and linked-destination signals |
+| ▦ QR code | Decode and analyze the destination without visiting it |
+
+**The public preview is not a scanner service.** No scan results, accounts or statistics are invented
+for the showcase; the complete, working application runs with the project's API and database.
 
 ---
 
@@ -170,6 +186,20 @@ every change; includes measured metrics, known gaps and the honest "not done" li
 ---
 
 ## Quick start
+
+### GitHub Pages preview
+
+The workflow in [`.github/workflows/pages.yml`](.github/workflows/pages.yml) builds and deploys
+the public frontend preview on pushes to `main`. Enable it once in the repository:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, choose **GitHub Actions** as the source.
+3. Open the **Actions** tab and re-run **Deploy PhishGuard demo**, or push a change to `main`.
+
+The preview works without a hosted API. To enable the authenticated app and scanner UI on a
+separately hosted backend, add `DEMO_API_BASE_URL` under **Settings → Secrets and variables →
+Actions → Variables**. Configure the backend to allow the Pages origin and credentials as
+documented in its CORS configuration. Never put API credentials in a public frontend variable.
 
 ### Option A — everything at once (recommended)
 

@@ -20,6 +20,7 @@ import DatasetPreprocessingPage from './pages/DatasetPreprocessingPage'
 import ModelsPage from './pages/ModelsPage'
 import EvaluationsPage from './pages/EvaluationsPage'
 import HealthPage from './pages/HealthPage'
+import PublicDemoPage from './pages/PublicDemoPage'
 
 /**
  * Application shell.
@@ -236,6 +237,10 @@ function Shell() {
 }
 
 export default function App() {
+  if (import.meta.env.MODE === 'github-pages' && !import.meta.env.VITE_API_BASE_URL) {
+    return <PublicDemoPage />
+  }
+
   return (
     <AuthProvider>
       <Shell />
